@@ -103,6 +103,7 @@ public class IHMTestEnsembleTests extends junit.framework.TestCase{
         diffE1_E2();
         verificationDuResultat(e1,"diff",e2,"2 3");
     }
+    
 
 
     public void test_IHMTestEnsemble_diffSym() throws Exception{
@@ -287,6 +288,98 @@ public class IHMTestEnsembleTests extends junit.framework.TestCase{
         robot.mouseRelease(InputEvent.BUTTON1_MASK);
         robot.delay(60);
     }//end mouseMoveAndClickClick
+  private class Z_BeansAppletStub implements AppletStub {
+        transient boolean active;
+        transient Applet target;
+        transient AppletContext context;
+        transient URL codeBase;
+        transient URL docBase;
 
+        Z_BeansAppletStub(Applet target,
+        AppletContext context, URL codeBase,
+        URL docBase) {
+            this.target = target;
+            this.context = context;
+            this.codeBase = codeBase;
+            this.docBase = docBase;
+        }
+
+        public boolean isActive() {
+            return active;
+        }
+
+        public URL getDocumentBase() {
+            // use the root directory of the applet's class-loader
+            return docBase;
+        }
+
+        public URL getCodeBase() {
+            // use the directory where we found the class or serialized object.
+            return codeBase;
+        }
+
+        public String getParameter(String name) {
+            return null;
+        }
+
+        public AppletContext getAppletContext() {
+            return context;
+        }
+
+        public void appletResize(int width, int height) {
+            // we do nothing.
+        }
+    }
+
+    private class Z_BeansAppletContext implements AppletContext {
+        Applet target;
+        java.util.Hashtable imageCache = new java.util.Hashtable();
+
+        Z_BeansAppletContext(Applet target) {
+            this.target = target;
+        }
+
+        public AudioClip getAudioClip(URL url) {
+            return null;
+        }
+
+        public synchronized Image getImage(URL url) {
+            return null;
+        }
+
+        public Applet getApplet(String name) {return null;}
+
+        public java.util.Enumeration getApplets() {
+            java.util.Vector applets = new java.util.Vector();
+            applets.addElement(target);
+            return applets.elements();
+        }
+
+        public void showDocument(URL url) {
+            // We do nothing.
+        }
+
+        public void showDocument(URL url, String target) {
+            // We do nothing.
+        }
+
+        public void showStatus(String status) {
+            // We do nothing.
+        }
+
+        public void setStream(String key, InputStream stream)throws IOException{
+            // We do nothing.
+        }
+
+        public InputStream getStream(String key){
+            // We do nothing.
+            return null;
+        }
+
+        public java.util.Iterator getStreamKeys(){
+            // We do nothing.
+            return null;
+        }
+    }
     
 }
